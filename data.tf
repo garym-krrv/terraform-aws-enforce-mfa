@@ -294,6 +294,12 @@ data "aws_iam_policy_document" "this" {
         variable = "aws:MultiFactorAuthPresent"
         values   = ["false", ]
       }
+      
+      condition {
+        test     = "BoolIfExists"
+        variable = "aws:ViaAWSService"
+        values   = ["false", ]
+      }
     }
   }
 }
